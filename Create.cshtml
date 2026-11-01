@@ -1,0 +1,84 @@
+@model InventoryManagement.Models.Product
+
+@{
+    ViewBag.Title = "Add Product";
+}
+
+<h2>Add Product</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProductName)
+
+        @Html.TextBoxFor(
+            model => model.ProductName,
+            new { @class = "form-control" }
+        )
+
+        @Html.ValidationMessageFor(
+            model => model.ProductName
+        )
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Category)
+
+        @Html.TextBoxFor(
+            model => model.Category,
+            new { @class = "form-control" }
+        )
+
+        @Html.ValidationMessageFor(
+            model => model.Category
+        )
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Price)
+
+        @Html.TextBoxFor(
+            model => model.Price,
+            new
+            {
+                @class = "form-control",
+                type = "number",
+                step = "0.01"
+            }
+        )
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Quantity)
+
+        @Html.TextBoxFor(
+            model => model.Quantity,
+            new
+            {
+                @class = "form-control",
+                type = "number"
+            }
+        )
+    </div>
+
+    <br />
+
+    <input type="submit"
+           value="Save Product"
+           class="btn btn-success" />
+
+    @Html.ActionLink(
+        "Back to List",
+        "Index",
+        null,
+        new { @class = "btn btn-secondary" }
+    )
+}
